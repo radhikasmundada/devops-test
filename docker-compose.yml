@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  productsDB:
+    image: postgres
+    container_name: postgres-container
+    environment:
+      POSTGRES_USER: radhika
+      POSTGRES_PASSWORD: radhika
+      POSTGRES_DB: products-db
+    ports:
+      - "5433:5432"
+    volumes:
+      - /Users/radhikamundada/Downloads/assessment-devOps/src/main/java/com/example/assessmentdevOps/docker-volume-data:/var/lib/postgresql/data
+  app:
+    build: .
+    image: products-app
+    container_name: products-app-container
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://productsDB:5432/products-db
+      SPRING_DATASOURCE_USERNAME: radhika
+      SPRING_DATASOURCE_PASSWORD: radhika
+    depends_on:
+      - productsDB
+
+
+
