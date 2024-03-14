@@ -5,7 +5,7 @@ pipeline{
         stage("Checkout for git")
         {
             steps{
-            checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/radhikasmundada/Spring_Learning']])
+            checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/radhikasmundada/devops-test']])
             }
         }
         stage("Building jar")
